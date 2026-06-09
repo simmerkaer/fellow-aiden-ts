@@ -16,8 +16,6 @@ brewer's cloud API. A faithful port of the Python library
 | --- | --- | --- |
 | **TypeScript / JavaScript** (this package) | [`fellow-aiden`](https://www.npmjs.com/package/fellow-aiden) (npm) | [fellow-aiden-ts](https://github.com/simmerkaer/fellow-aiden-ts) |
 | .NET | [`FellowAiden`](https://www.nuget.org/packages/FellowAiden) (NuGet) | [fellow-aiden-dotnet](https://github.com/simmerkaer/fellow-aiden-dotnet) |
-| Python | _planned_ | — |
-
 ## Install
 
 ```sh
