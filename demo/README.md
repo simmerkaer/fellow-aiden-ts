@@ -1,6 +1,6 @@
 # fellow-aiden live demo
 
-A tiny Vite single-page app that uses the [`fellow-aiden`](../javascript)
+A tiny Vite single-page app that uses the [`fellow-aiden`](../client)
 library **in the browser** to log in and list your brewer's profiles and
 schedules.
 
@@ -14,9 +14,9 @@ browser (this app)  ──►  Cloudflare Worker proxy  ──►  Fellow API
 
 ## Run locally
 
-1. Build the library (the demo imports it via `file:../javascript`):
+1. Build the library (the demo imports it via `file:../client`):
    ```sh
-   cd ../javascript && npm install && npm run build
+   cd ../client && npm install && npm run build
    ```
 2. Start the proxy (in another terminal):
    ```sh

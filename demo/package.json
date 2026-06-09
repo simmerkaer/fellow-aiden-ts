@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "fellow-aiden": "file:../javascript"
+    "fellow-aiden": "file:../client"
   },
   "devDependencies": {
     "typescript": "^5.7.2",

@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'javascript/**'
+      - 'client/**'
       - 'demo/**'
       - '.github/workflows/deploy-demo.yml'
   workflow_dispatch:
@@ -29,10 +29,10 @@ jobs:
         with:
           node-version: 22
 
-      # Build the library first — the demo imports it via `file:../javascript`,
+      # Build the library first — the demo imports it via `file:../client`,
       # which resolves to its built dist/.
       - name: Build library
-        working-directory: javascript
+        working-directory: client
         run: |
           npm ci
           npm run build

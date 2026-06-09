@@ -11,7 +11,7 @@ library [`9b/fellow-aiden`](https://github.com/9b/fellow-aiden).
 
 | Folder | What it is |
 | --- | --- |
-| [`javascript/`](./javascript) | The client library (published to npm as `fellow-aiden`) |
+| [`client/`](./client) | The client library (published to npm as `fellow-aiden`) |
 | [`proxy/`](./proxy) | Cloudflare Worker CORS proxy (for the browser demo) |
 | [`demo/`](./demo) | Vite single-page demo that uses the library in the browser |
 
@@ -20,7 +20,7 @@ library [`9b/fellow-aiden`](https://github.com/9b/fellow-aiden).
 Read your real profiles from the command line:
 
 ```sh
-cd javascript
+cd client
 npm install
 cp .env.example .env      # then edit .env with your Fellow login
 npm run demo
