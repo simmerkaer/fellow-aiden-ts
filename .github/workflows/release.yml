@@ -7,7 +7,7 @@ on:
 
 permissions:
   contents: read
-  id-token: write # required for npm provenance attestation
+  id-token: write # required for npm trusted publishing (OIDC) + provenance
 
 jobs:
   publish:
@@ -19,6 +19,10 @@ jobs:
         with:
           node-version: 22
           registry-url: 'https://registry.npmjs.org'
+
+      # Trusted publishing requires npm >= 11.5.1; Node 22's bundled npm is older.
+      - name: Upgrade npm
+        run: npm install -g npm@latest
 
       # Guard: the git tag (without the leading "v") must match the version in
       # client/package.json, so a tag can never publish a mismatched version.
@@ -40,8 +44,9 @@ jobs:
           npm run build
           npm test
 
-      - name: Publish to npm (with provenance)
+      # No token: npm detects the GitHub Actions OIDC environment and publishes
+      # via the trusted publisher configured on npmjs.com. Provenance is
+      # generated automatically.
+      - name: Publish to npm
         working-directory: client
-        run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish
