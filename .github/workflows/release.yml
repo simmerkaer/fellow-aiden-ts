@@ -1,0 +1,47 @@
+name: Release to npm
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: read
+  id-token: write # required for npm provenance attestation
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://registry.npmjs.org'
+
+      # Guard: the git tag (without the leading "v") must match the version in
+      # client/package.json, so a tag can never publish a mismatched version.
+      - name: Verify tag matches package version
+        working-directory: client
+        run: |
+          PKG=$(node -p "require('./package.json').version")
+          TAG="${GITHUB_REF_NAME#v}"
+          echo "tag=$TAG package=$PKG"
+          if [ "$PKG" != "$TAG" ]; then
+            echo "::error::Tag $TAG does not match client/package.json version $PKG" >&2
+            exit 1
+          fi
+
+      - name: Install, build, test
+        working-directory: client
+        run: |
+          npm ci
+          npm run build
+          npm test
+
+      - name: Publish to npm (with provenance)
+        working-directory: client
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
