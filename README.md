@@ -1,5 +1,10 @@
 # Fellow Aiden — TypeScript client
 
+[![npm version](https://img.shields.io/npm/v/fellow-aiden.svg)](https://www.npmjs.com/package/fellow-aiden)
+[![npm downloads](https://img.shields.io/npm/dm/fellow-aiden.svg)](https://www.npmjs.com/package/fellow-aiden)
+[![license](https://img.shields.io/npm/l/fellow-aiden.svg)](./client/LICENSE)
+[![deploy demo](https://github.com/simmerkaer/fellow-aiden-ts/actions/workflows/deploy-demo.yml/badge.svg)](https://github.com/simmerkaer/fellow-aiden-ts/actions/workflows/deploy-demo.yml)
+
 A TypeScript/JavaScript client for the [Fellow Aiden](https://fellowproducts.com/)
 coffee brewer's cloud API, plus a live browser demo. Inspired by the Python
 library [`9b/fellow-aiden`](https://github.com/9b/fellow-aiden).
